@@ -691,14 +691,8 @@ function asyncParForEach(array, fn, callback) {
         });
     };
     
-    // TODO: BUG open an XML file and switch between, language doesn't update soon enough
     this.switchFile = function(path, language, code) {
         var _self = this;
-        if (!this.$analyzeInterval) {
-            this.$analyzeInterval = setInterval(function() {
-                _self.analyze(function(){});
-            }, 2000);
-        }
         var oldPath = this.$path;
         code = code || "";
         this.$path = path;
@@ -718,6 +712,15 @@ function asyncParForEach(array, fn, callback) {
         handler.path = this.$path;
         handler.language = this.$language;
         handler.onDocumentOpen(this.$path, this.doc, oldPath, callback);
+    };
+    
+    this.documentOpen = function(path, language, code) {
+        var _self = this;
+        var doc = {getValue: function() {return code;} };
+        asyncForEach(this.handlers, function(handler, next) {
+        console.log(handler.onDocumentOpen+"")
+            handler.onDocumentOpen(path, doc, _self.path, next);
+        });
     };
     
     this.documentClose = function(event) {
