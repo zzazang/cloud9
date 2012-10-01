@@ -724,10 +724,6 @@ function asyncParForEach(array, fn, callback) {
     };
     
     this.documentClose = function(event) {
-        if (this.$analyzeInterval) {
-            clearInterval(this.$analyzeInterval);
-            this.$analyzeInterval = null;
-        }
         var path = event.data;
         asyncForEach(this.handlers, function(handler, next) {
             handler.onDocumentClose(path, next);
