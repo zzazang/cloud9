@@ -54427,9 +54427,8 @@ apf.aml.setElement("image", apf.BindingRule);
  *  </a:toolbar>
  * ```
  * 
- * @class apf.item
- * @selection
  * @define item
+ * @class apf.item
  * @inherits apf.Presentation
  *
  */
@@ -55976,6 +55975,10 @@ apf.aml.setElement("loader", apf.loader);
  * Based on the context of the menu, items can be shown and hidden. That's
  * why this element is often called a contextmenu.
  * 
+ * @class apf.menu
+ * @define menu
+ * @selection
+ * @allowchild item, divider, check, radio
  *
  *
  * #### Example
@@ -56017,11 +56020,6 @@ apf.aml.setElement("loader", apf.loader);
  *    center      = "true">
  *  </a:window>
  * ```
- *
- * @class apf.menu
- * @define menu
- * @selection
- * @allowchild item, divider, check, radio
  * @see apf.GuiElement@contextmenu
  *
  * @author      Ruben Daniels (ruben AT ajax DOT org)
